@@ -15,7 +15,7 @@ class ClientController extends Controller
     public function index()
     {
         $clients = Client::all();
-        return view('pages.client.list', compact('clients'));
+        return view('pages.client.index', compact('clients'));
     }
 
     /**
@@ -61,8 +61,13 @@ class ClientController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Client $client)
+    public function destroy($id)
     {
-        //
+        $client = Client::findOrFail($id);
+
+        $client->delete();
+
+        return redirect()->route('client.index')->with('success', 'Client deleted successfully.');
     }
+
 }

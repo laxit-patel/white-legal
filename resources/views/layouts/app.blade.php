@@ -50,6 +50,11 @@
                             @endif
                         @else
                         <li class="nav-item">
+                            <a href="{{ route('user.index') }}" class="nav-link">
+                                User
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('client.index') }}" class="nav-link">
                                 Client
                             </a>

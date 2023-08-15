@@ -30,3 +30,5 @@ route::controller(App\Http\Controllers\ClientController::class)->group(function 
     Route::put('/client/{client}', 'update')->name('client.update');
     Route::delete('/client/{client}', 'destroy')->name('client.destroy');
 });
+
+Route::resource('user', \App\Http\Controllers\UserController::class);
