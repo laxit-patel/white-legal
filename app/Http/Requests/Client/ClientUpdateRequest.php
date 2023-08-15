@@ -17,7 +17,7 @@ class ClientUpdateRequest extends FormRequest
         return [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:clients,email,' . $this->route('client'),
+            'email' => 'required|email|unique:clients,email,' . $this->client->id,
             'phone_number' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:255',
             'date_of_birth' => 'nullable|date',
