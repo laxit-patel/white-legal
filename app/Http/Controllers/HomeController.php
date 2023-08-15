@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +25,25 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Get total counts
+        $totalUsers = User::count();
+        $totalClients = Client::count();
+
+        // Get active counts
+        $activeUsers = User::whereNotNull('email_verified_at')->count();
+        $activeClients = Client::whereNotNull('email_verified_at')->count();
+
+        // Get latest users and clients
+        $latestUsers = User::latest()->limit(5)->get();
+        $latestClients = Client::latest()->limit(5)->get();
+
+        return view('home', compact(
+            'totalUsers',
+            'activeUsers',
+            'totalClients',
+            'activeClients',
+            'latestUsers',
+            'latestClients'
+        ));
     }
 }

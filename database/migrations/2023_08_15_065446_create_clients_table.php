@@ -33,6 +33,7 @@ return new class extends Migration
             $table->text('conflict_of_interest')->nullable();
             $table->string('source_of_referral')->nullable();
             $table->text('notes')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamps();
         });
     }
